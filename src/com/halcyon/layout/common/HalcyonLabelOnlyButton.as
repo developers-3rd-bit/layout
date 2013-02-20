@@ -33,6 +33,7 @@ package com.halcyon.layout.common
          _labelField.setTextFormat(_textFormat);
          _labelField.mouseEnabled = false;
          _labelField.autoSize = TextFieldAutoSize.CENTER;
+         fontSize = 12;
          
          this.prepareElementAndPosition(_labelField, 0, 0, 0, 0);
          
@@ -83,7 +84,7 @@ package com.halcyon.layout.common
          _labelField.text = value;
          _labelField.setTextFormat(_textFormat);
          if(isNaN(_passedWidth)) recalculateWidth();
-         else this.prepareElementAndPosition(_labelField, (super.height - _labelField.height) / 2, NaN, 0, 0);
+         else this.prepareElementAndPosition(_labelField, (super.height - _labelField.height) / 2, 0, 0, 0);
       }
       
       public function set fontSize(value:Number):void
@@ -94,10 +95,8 @@ package com.halcyon.layout.common
          if(isNaN(_passedHeight)) 
             super.height = 18 + value - 10;
          else 
-         {
             _labelField.height = value + 2;
-            this.prepareElementAndPosition(_labelField, (_passedHeight - _labelField.height) / 2, NaN, NaN, NaN);
-         }
+         this.prepareElementAndPosition(_labelField, value > 11 ? 0 : 1, 0, 0, 0);
          if(isNaN(_passedWidth)) recalculateWidth();
       }
       
