@@ -114,20 +114,17 @@ package com.halcyon.layout.common
          if(value < 1) return;
          _textFormat.size = value;
          _labelField.setTextFormat(_textFormat);
-         if(value > 12)
+         ICON_WIDTH_HEIGHT = value > ICON_WIDTH_HEIGHT ? value : ICON_WIDTH_HEIGHT;
+         if(isNaN(_passedHeight)) 
+            super.height = 18 + value - 10;
+         else 
          {
-            ICON_WIDTH_HEIGHT = value > ICON_WIDTH_HEIGHT ? value : ICON_WIDTH_HEIGHT;
-            if(isNaN(_passedHeight)) 
-               super.height = 18 + value - 10;
-            else 
-            {
-               _labelField.height = value + 2;
-               this.prepareElementAndPosition(_labelField, (_passedHeight - _labelField.height) / 2, NaN, ICON_WIDTH_HEIGHT + ICON_TO_LABEL_GAP, NaN);
-            }
-            if(isNaN(_passedWidth)) recalculateWidth();
-            icon = _icon;
-            drawBackground([0xff0000, 0x000000]);
+            _labelField.height = value + 2;
+            this.prepareElementAndPosition(_labelField, (_passedHeight - _labelField.height) / 2, NaN, ICON_WIDTH_HEIGHT + ICON_TO_LABEL_GAP, NaN);
          }
+         if(isNaN(_passedWidth)) recalculateWidth();
+         icon = _icon;
+         drawBackground([0xff0000, 0x000000]);
       }
       
       private function recalculateWidth():void

@@ -91,17 +91,14 @@ package com.halcyon.layout.common
          if(value < 1) return;
          _textFormat.size = value;
          _labelField.setTextFormat(_textFormat);
-         if(value > 12)
+         if(isNaN(_passedHeight)) 
+            super.height = 18 + value - 10;
+         else 
          {
-            if(isNaN(_passedHeight)) 
-               super.height = 18 + value - 10;
-            else 
-            {
-               _labelField.height = value + 2;
-               this.prepareElementAndPosition(_labelField, (_passedHeight - _labelField.height) / 2, NaN, NaN, NaN);
-            }
-            if(isNaN(_passedWidth)) recalculateWidth();
+            _labelField.height = value + 2;
+            this.prepareElementAndPosition(_labelField, (_passedHeight - _labelField.height) / 2, NaN, NaN, NaN);
          }
+         if(isNaN(_passedWidth)) recalculateWidth();
       }
       
       private function recalculateWidth():void
